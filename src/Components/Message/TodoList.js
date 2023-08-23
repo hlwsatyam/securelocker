@@ -1,4 +1,5 @@
 import React from 'react'
+import './Message.css';
 function TodoList({ text, deleteOp, updateOp}) {
 
     return (

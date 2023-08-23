@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './RegLog.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-const RegLog = ({ SetEmail }) => {
+const RegLog = ({path ,SetEmail }) => {
     const [Login, setLogin] = useState(true)
     const [emailError, setEmailError] = useState(false)
     const [Error, setError] = useState('')
@@ -32,7 +32,7 @@ const RegLog = ({ SetEmail }) => {
                         password: "",
                         repassword: ""
                     })
-                    navigate('/textMesage')
+                    navigate(path)
                 } else {
                     setEmailError(false)
                     setError(res.data)
