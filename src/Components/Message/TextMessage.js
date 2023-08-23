@@ -31,7 +31,7 @@ function TextMessage({ Email }) {
             if (curr == '') {
                 return setBlankCurr(true)
             }
-            await axios.post("https://securelocker.onrender.com/text/save", { text: curr, email: Email }).then((data) => {
+            await axios.post("https://securelocker.onrender.com/text/Textsave", { text: curr, email: Email }).then((data) => {
                 console.log(data.data)
                 SetToDo(data.data)
             }
@@ -50,7 +50,7 @@ function TextMessage({ Email }) {
         if (Email == "") {
             return setEmailIsPresent(false)
         }
-        await axios.post("https://securelocker.onrender.com/text/delete", { id: id, email: Email })
+        await axios.post("https://securelocker.onrender.com/text/Textdelete", { id: id, email: Email })
             .then((data) => {
                 if (changeForGetAll) {
                     SetchangeForGetAll(false)
@@ -64,7 +64,7 @@ function TextMessage({ Email }) {
         if (Email == "") {
             return setEmailIsPresent(false)
         }
-        await axios.put("https://securelocker.onrender.com/text/update", { id: id, email: Email })
+        await axios.put("https://securelocker.onrender.com/text/Textupdate", { id: id, email: Email })
             .then((data) => {
                 Setcurr(data.data)
                 if (changeForGetAll) {

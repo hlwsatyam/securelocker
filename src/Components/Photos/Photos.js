@@ -1,24 +1,37 @@
 import React from 'react'
 import './Photos.css'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import PhotosList from './PhotosList';
 function Photos({ Email }) {
     const [ToDo, SetToDo] = useState([])
-    const [curr, Setcurr] = useState('')
     const [blankcurr, setBlankCurr] = useState(false)
-    const [emailIsPresent, setEmailIsPresent] = useState(true)
     const [changeForGetAll, SetchangeForGetAll] = useState(true)
 
+    const [file, setFile] = useState(null);
+    const [photos, setPhotos] = useState([]);
 
 
-    const SubmitHandler = () => {
-        if (Email == "") {
-            return setEmailIsPresent(false)
-        }
-        if (curr == '') {
+    const handleFileChange = event => {
+        setFile(event.target.files[0]);
+    };
+
+
+    const SubmitHandler = async () => {
+
+        if (file == null) {
             return setBlankCurr(true)
         }
+
+        const formData = new FormData();
+        formData.append('photo', file);
+
+        await axios.post('https://securelocker.onrender.com/photo/Photosave', formData)
+            .then(response => {
+                setPhotos([...photos, response.data]);
+                setFile(null);
+            })
 
     }
 
@@ -36,14 +49,10 @@ function Photos({ Email }) {
             <div className="App">
                 <div className="container">
 
-                    {
-                        emailIsPresent ? null : <p className='h6 mt-1 p-1 text-danger border shadow' >Please Login!  <a href="https://securelocker.vercel.app/">Click Now</a>  !</p>
-                    }
-
                     <Link className='text-decoration-none' to="/"> <div className="h1 text-danger  ">Secure Locker!</div></Link>
                     <div className="top m-3 ">
-                        <input className='border m-auto text-danger shadow ' type="file" placeholder='Add Something...' name="" id="" value={curr} onChange={(e) => {
-                            Setcurr(e.target.value)
+                        <input className='border m-auto text-danger shadow ' type="file" placeholder='Add Something...' name="" id="" onChange={(e) => {
+                            handleFileChange(e)
                         }} />
 
                     </div>
@@ -57,7 +66,7 @@ function Photos({ Email }) {
                     <div className="list border mt-5 ">
                         {
                             ToDo.map((item) => <PhotosList
-                  
+
                                 deleteOp={() => deleteOp(Email, item.id)}
                                 updateOp={() => updateOp(Email, item.id)}
 
