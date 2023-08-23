@@ -57,7 +57,7 @@ function Photos({ Email }) {
                     <div className="list border mt-5 ">
                         {
                             ToDo.map((item) => <PhotosList
-
+                  
                                 deleteOp={() => deleteOp(Email, item.id)}
                                 updateOp={() => updateOp(Email, item.id)}
 

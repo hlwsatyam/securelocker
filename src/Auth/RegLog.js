@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './RegLog.css'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-const RegLog = ({path ,SetEmail }) => {
+import { useNavigate, Link } from 'react-router-dom';
+const RegLog = ({ path, SetEmail }) => {
     const [Login, setLogin] = useState(true)
     const [emailError, setEmailError] = useState(false)
     const [Error, setError] = useState('')
@@ -119,7 +119,7 @@ const RegLog = ({path ,SetEmail }) => {
 
                                                     <div class="d-flex align-items-center mb-3 pb-1">
                                                         <i class="fas fa-cubes fa-2x me-3" ></i>
-                                                        <span class="h1 fw-bold mb-0">Locker</span>
+                                                        <Link className='text-decoration-none' to="/"> <div className="h1 text-danger  ">Secure Locker!</div></Link>
                                                     </div>
 
                                                     <h5 class="fw-normal mb-3 pb-3" >Sign into your account</h5>
