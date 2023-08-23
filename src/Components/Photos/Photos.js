@@ -1,5 +1,6 @@
 import React from 'react'
 import './Photos.css'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import PhotosList from './PhotosList';
 function Photos({ Email }) {
@@ -39,7 +40,7 @@ function Photos({ Email }) {
                         emailIsPresent ? null : <p className='h6 mt-1 p-1 text-danger border shadow' >Please Login!  <a href="https://securelocker.vercel.app/">Click Now</a>  !</p>
                     }
 
-                    <a className='text-decoration-none' href="https://securelocker.vercel.app/"> <div className="h1 text-danger  ">Secure Locker!</div></a>
+                    <Link className='text-decoration-none' to="/"> <div className="h1 text-danger  ">Secure Locker!</div></Link>
                     <div className="top m-3 ">
                         <input className='border m-auto text-danger shadow ' type="file" placeholder='Add Something...' name="" id="" value={curr} onChange={(e) => {
                             Setcurr(e.target.value)
