@@ -12,7 +12,7 @@ function App({ Email }) {
   const [changeForGetAll, SetchangeForGetAll] = useState(true)
   useEffect(() => {
     async function getData() {
-      await axios.post("http://localhost:8000/text", { email: Email }).then((data) => {
+      await axios.post("https://securelocker.onrender.com/text", { email: Email }).then((data) => {
         if (data.data == null) {
           alert("no text found")
         } else {
@@ -35,7 +35,7 @@ function App({ Email }) {
         return setBlankCurr(true)
       }
 
-      await axios.post("http://localhost:8000/text/save", { text: curr, email: Email }).then((data) => {
+      await axios.post("https://securelocker.onrender.com/text/save", { text: curr, email: Email }).then((data) => {
         console.log(data.data)
         SetToDo(data.data)
       }
@@ -59,7 +59,7 @@ function App({ Email }) {
       return setEmailIsPresent(false)
     }
 
-    await axios.post("http://localhost:8000/text/delete", { id: id, email: Email })
+    await axios.post("https://securelocker.onrender.com/text/delete", { id: id, email: Email })
       .then((data) => {
         if (changeForGetAll) {
           SetchangeForGetAll(false)
@@ -75,7 +75,7 @@ function App({ Email }) {
       return setEmailIsPresent(false)
     }
 
-    await axios.put("http://localhost:8000/text/update", { id: id, email: Email })
+    await axios.put("https://securelocker.onrender.com/text/update", { id: id, email: Email })
       .then((data) => {
         Setcurr(data.data)
         if (changeForGetAll) {
@@ -95,7 +95,7 @@ function App({ Email }) {
       <div className="container">
 
         {
-          emailIsPresent ? null : <p className='h6 mt-1 p-1 text-danger border shadow' >Please Login!  <a href="http://localhost:3000/">Click Now</a>  !</p>
+          emailIsPresent ? null : <p className='h6 mt-1 p-1 text-danger border shadow' >Please Login!  <a href="https://securelocker.vercel.app/">Click Now</a>  !</p>
         }
 
         <div className="h1 text-danger  ">Secure Locker!</div>

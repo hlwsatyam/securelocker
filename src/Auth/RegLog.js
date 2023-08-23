@@ -22,7 +22,7 @@ const RegLog = ({ SetEmail }) => {
             setEmailError(true)
         }
         else {
-            await axios.post('http://localhost:8000/locker/login', { User }).then((res) => {
+            await axios.post('https://securelocker.onrender.com/locker/login', { User }).then((res) => {
                 console.log(res.data)
                 if (res.data == 'Success') {
                     SetEmail(User.email)
@@ -48,7 +48,7 @@ const RegLog = ({ SetEmail }) => {
             setEmailError(true)
         } else {
             if (User.password == User.repassword) {
-                await axios.post('http://localhost:8000/locker/signup', { User }).then((res) => {
+                await axios.post('https://securelocker.onrender.com/locker/signup', { User }).then((res) => {
                     console.log(res.data)
                     if (res.data == 'Success') {
                         SetEmail(User.email)
