@@ -12,7 +12,6 @@ function Photos({ Email }) {
     const [file, setFile] = useState(null);
     const [photos, setPhotos] = useState([]);
 
-
     const handleFileChange = event => {
         setFile(event.target.files[0]);
     };
@@ -28,6 +27,7 @@ function Photos({ Email }) {
         formData.append('photo', file);
 
         await axios.post('https://securelocker.onrender.com/photo/Photosave', formData)
+        // await axios.post('http://localhost:8000/photo/Photosave', formData)
             .then(response => {
                 setPhotos([...photos, response.data]);
                 setFile(null);

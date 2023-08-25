@@ -13,7 +13,7 @@ function Home() {
                     <Link className='text-decoration-none' data-toggle="tooltip" title="Your Photos" to='/photos' >  Photo  </Link>
                     <Link className='text-decoration-none' data-toggle="tooltip" title="Your Videos" to='/textMesage' >  Video  </Link>
                     <Link className='text-decoration-none' data-toggle="tooltip" title="Your Audios" to='/textMesage' >  Audio  </Link>
-                    <Link className='text-decoration-none' data-toggle="tooltip" title="Your Documents" to='/textMesage' >  Document  </Link>
+                    <Link className='text-decoration-none' data-toggle="tooltip" title="Your Documents" to='/documents' >  Document  </Link>
                     <Link className='text-decoration-none' data-toggle="tooltip" title="Your Numbers" to='/textMesage' >  Number  </Link>
 
                 </h5>

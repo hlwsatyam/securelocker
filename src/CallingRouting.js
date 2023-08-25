@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import TextMessage from './Components/Message/TextMessage'
 import Home from './Components/Home/Home'
 import Photos from './Components/Photos/Photos'
+import Document from './Components/Document/Document'
 function CallingRouting() {
     const [Email, SetEmail] = useState(null)
     return (
@@ -14,7 +15,12 @@ function CallingRouting() {
 
                     <Route path='/textMesage' element={Email ? <TextMessage Email={Email} /> : <RegLog path='/textMesage' SetEmail={SetEmail} />} />
 
-                    <Route path='/photos' element={Email ? <Photos Email={Email} /> : <RegLog path='/photos' SetEmail={SetEmail} />} />               </Routes>
+                    <Route path='/photos' element={Email ? <Photos Email={Email} /> : <RegLog path='/photos' SetEmail={SetEmail} />} />  
+
+
+                    <Route path='/documents' element={Email ? <Document Email={Email} /> : <RegLog path='/documents' SetEmail={SetEmail} />} />            
+                    
+                       </Routes>
             </BrowserRouter>
         </div>
     )
