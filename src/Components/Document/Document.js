@@ -25,7 +25,7 @@ function Document({ Email }) {
 
   const save = async () => {
     console.log(tableData)
-    await axios.post('http://localhost:8000/document/Documentsave', { tableData, Email }).then((data) => {
+    await axios.post('https://securelocker.onrender.com/document/Documentsave', { tableData, Email }).then((data) => {
       console.log(data.data)
     })
   };
