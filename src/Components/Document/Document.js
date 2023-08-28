@@ -11,7 +11,8 @@ function Document({ Email }) {
 
   useEffect(() => {
     async function getData() {
-      await axios.post("http://localhost:8000/document", { Email }).then((data) => {
+      await axios.post("https://securelocker.onrender.com/document", { Email }).then((data) => {
+        
         // await axios.post("http://localhost:8000/text", { email: Email }).then((data) => {
 
         SetDocumemt(data.data)
@@ -40,9 +41,9 @@ function Document({ Email }) {
   };
 
   const save = async () => {
-    await axios.post('https://securelocker.onrender.com/document/Documentsave', { tableData, Email }).then((data) => {
+    // await axios.post('https://securelocker.onrender.com/document/Documentsave', { tableData, Email }).then((data) => {
 
-    // await axios.post('http://localhost:8000/document/Documentsave', { tableData, Email }).then((data) => {
+    await axios.post('http://localhost:8000/document/Documentsave', { tableData, Email }).then((data) => {
       setTableData([['']])
       if (changeForGetAll) {
         SetchangeForGetAll(false)
