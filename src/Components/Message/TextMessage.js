@@ -1,4 +1,3 @@
-
 import './Message.css';
 import axios from 'axios';
 import TodoList from './TodoList';
@@ -13,6 +12,7 @@ function TextMessage({ Email }) {
     useEffect(() => {
         async function getData() {
             await axios.post("https://securelocker.onrender.com/text", { email: Email }).then((data) => {
+                // await axios.post("http://localhost:8000/text", { email: Email }).then((data) => {
                 if (data.data == null) {
                     alert("no text found")
                 } else {

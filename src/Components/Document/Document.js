@@ -1,10 +1,26 @@
 import axios from 'axios'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Document({ Email }) {
   const [numRows, setNumRows] = useState(1);
   const [numCols, setNumCols] = useState(1);
   const [tableData, setTableData] = useState([['']]);
+  const [documents, SetDocumemt] = useState(null)
+
+  const [changeForGetAll, SetchangeForGetAll] = useState(true)
+
+  useEffect(() => {
+    async function getData() {
+      await axios.post("http://localhost:8000/document", { Email }).then((data) => {
+        // await axios.post("http://localhost:8000/text", { email: Email }).then((data) => {
+
+        SetDocumemt(data.data)
+
+      },)
+    }
+    getData()
+
+  }, [changeForGetAll])
 
   const handleRowIncrease = () => {
     setNumRows(numRows + 1);
@@ -24,9 +40,15 @@ function Document({ Email }) {
   };
 
   const save = async () => {
-    console.log(tableData)
     await axios.post('https://securelocker.onrender.com/document/Documentsave', { tableData, Email }).then((data) => {
-      console.log(data.data)
+
+    // await axios.post('http://localhost:8000/document/Documentsave', { tableData, Email }).then((data) => {
+      setTableData([['']])
+      if (changeForGetAll) {
+        SetchangeForGetAll(false)
+      } else {
+        SetchangeForGetAll(true)
+      }
     })
   };
 
@@ -77,15 +99,22 @@ function Document({ Email }) {
       </table>
       <div>
         <h3>Table Data:</h3>
-        <ul>
-          {tableData.map((row, rowIndex) => (
-            <li key={rowIndex}>
-              Row {rowIndex + 1}: {row.join(', ')}
-            </li>
-          ))}
-        </ul>
+
+
+        {
+          documents && documents.map((Arr1, i) => <table className='border shadow m-3 '  >
+            <h1   >   Table {i + 1}  </h1>
+            {
+              Arr1.map((Arr2, j) => <tr>
+                {
+                  Arr2.map((val, k) => <td> {val} </td>)
+                }
+              </tr>)
+            }
+          </table>)
+        }
       </div>
-    </div>
+    </div >
   );
 }
 
