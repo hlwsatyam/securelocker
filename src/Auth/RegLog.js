@@ -22,8 +22,8 @@ const RegLog = ({ path, SetEmail }) => {
             setEmailError(true)
         }
         else {
-            // await axios.post('https://securelocker.onrender.com/locker/login', { User }).then((res) => {
-            await axios.post('http://localhost:8000/locker/login', { User }).then((res) => {
+            await axios.post('https://securelocker.onrender.com/locker/login', { User }).then((res) => {
+            // await axios.post('http://localhost:8000/locker/login', { User }).then((res) => {
                 console.log(res.data)
                 if (res.data == 'Success') {
                     SetEmail(User.email)
